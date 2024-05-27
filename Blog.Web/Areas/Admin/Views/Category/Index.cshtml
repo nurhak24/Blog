@@ -1,0 +1,57 @@
+﻿@model List<CategoryDto>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Category Yönetimi /</span> Category
+    </h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+            <table class="table table-bordered" id="CategoriesTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>isim</th>
+                        
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>işlemler</th>
+  
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Kategori</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                   
+                    </tr>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var category in Model)
+                    {
+                        <tr name="@category.Id">
+                            <td>@category.Name</td>
+                            <td>@category.CreatedDate.ToShortDateString()</td>
+                            
+                            <td>@category.CreatedBy</td>
+                            <td>@(category.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+
+
+
+
+</div>
+
+@section Scripts {
+    <script src="~/js/articleIndex.js" type="application/ecmascript"></script>
+}
